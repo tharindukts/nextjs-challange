@@ -1,15 +1,18 @@
 import React from 'react';
 import axios from "axios";
 import BuildingTable from "../../components/buildingTable";
-import {getSession} from "../../utils/util";
+import {getSession} from "../action";
 
 async function getData() {
     try {
-        const session = getSession()
-        const res = await axios.get(
-            'https://gfiaywyod1.execute-api.ap-southeast-2.amazonaws.com/dev/buildings/list?token=' + session.token)
+        const session = await getSession()
+        if (session != null) {
+            const res = await axios.get(
+                'https://gfiaywyod1.execute-api.ap-southeast-2.amazonaws.com/dev/buildings/list?token=' + session.token)
 
-        return res.data
+            return res.data
+        }
+
     } catch (err) {
        console.log(err)
     }
