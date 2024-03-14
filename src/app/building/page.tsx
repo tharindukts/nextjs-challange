@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from "axios";
 import BuildingTable from "../../components/buildingTable";
-import {getSession} from "../action";
+import {getSession} from "../actions/auth";
 
 async function getData() {
     try {
@@ -22,8 +22,10 @@ async function Page() {
 
     const data = await getData()
     return (
-        <div className="min-h-screen flex  justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-md w-full space-y-8">
+        <div className=" flex  h-full    sm:px-6 lg:px-8 mt-6 flex  items-center justify-center  ">
+            <div className=" space-y-4 w-full " >
+                <h2 className="text-4xl d text-gray-600">Payments tool for companies</h2>
+
                 <BuildingTable tableData={data}/>
             </div>
         </div>

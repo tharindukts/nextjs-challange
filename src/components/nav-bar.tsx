@@ -1,16 +1,16 @@
 import NavBarLink from "./nav-bar-link";
-import {deleteSession, getSession} from "../app/action";
+import {getSession} from "../app/actions/auth";
 
 async function NavBar() {
     const session = await getSession()
 
-    const logoutSession = async () => {
-        "use server"
-        await deleteSession()
-    }
     return (
         <>
-            <NavBarLink token={session ? session.token : ""} logout={logoutSession}/>
+            {
+                session ?
+                    <NavBarLink token={session.token} email={session.email} /> : ''
+            }
+
         </>
     );
 }
