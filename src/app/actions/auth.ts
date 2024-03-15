@@ -3,13 +3,15 @@ import axios from "axios";
 import {cookies} from "next/headers";
 import {redirect} from "next/navigation";
 import NextCrypto from 'next-crypto';
+import {revalidatePath} from "next/cache";
+import logger from "../../../logger";
 
-const CRYPTO_KEY = '/1qBgbxzswO8/67OuXqld7Cmjl7uQWPap93iLTeMruZS3Er24R7LlFt3yl1czast'
+const CRYPTO_KEY = process.env.CRYPTO_KEY
 
 export async function handleLogin(formData: FormData) {
     let isResponseSuccess = false
     try {
-        const response = await axios.post('https://jym3r82vt6.execute-api.ap-southeast-2.amazonaws.com/dev/auth/create', {
+        const response = await axios.post(process.env.TOKEN_FETCH_URL, {
             email: formData.get('email'),
             pin: formData.get('pin'),
         })
@@ -22,7 +24,7 @@ export async function handleLogin(formData: FormData) {
     } catch (err) {
         isResponseSuccess = false
 
-        if (err.response.data) {
+        if (err.response) {
             throw new Error(err.response.data.errorMessage)
         } else {
             throw new Error("Something went wrong")
@@ -49,6 +51,9 @@ export async function getSession() {
         if (decrypted != null)
             return JSON.parse(decrypted)
     }
-
 }
+export async function revalidateBuildingData() {
+    revalidatePath('/building')
+}
+
 
