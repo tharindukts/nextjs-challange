@@ -1,18 +1,18 @@
-'use client'
+"use client";
 import Link from "next/link";
 import {deleteSession} from "../app/actions/auth";
 
-import {Disclosure, Menu, Transition} from '@headlessui/react'
+import {Disclosure, Menu, Transition} from "@headlessui/react";
 import {Fragment} from "react";
 
 const navigation = [
-    {name: 'Dashboard', href: '/', current: true},
-    {name: 'Building List', href: '/building', current: true},
+    {name: "Dashboard", href: "/", current: true},
+    {name: "Building List", href: "/building", current: true},
 
-]
+];
 
 function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
+    return classes.filter(Boolean).join(" ");
 }
 
 interface NavBarLinkProps {
@@ -21,7 +21,7 @@ interface NavBarLinkProps {
 }
 
 function NavBarLink({token, email}: NavBarLinkProps) {
-
+    
     return (
         <>
             <Disclosure as="nav" className="bg-gray-800">
@@ -46,10 +46,10 @@ function NavBarLink({token, email}: NavBarLinkProps) {
                                                     key={item.name}
                                                     href={item.href}
                                                     className={classNames(
-                                                         'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                                        'rounded-md px-3 py-2 text-sm font-medium'
+                                                        "text-gray-300 hover:bg-gray-700 hover:text-white",
+                                                        "rounded-md px-3 py-2 text-sm font-medium"
                                                     )}
-                                                    aria-current={item.current ? 'page' : undefined}
+                                                    aria-current={item.current ? "page" : undefined}
                                                 >
                                                     {item.name}
                                                 </Link>
@@ -92,7 +92,7 @@ function NavBarLink({token, email}: NavBarLinkProps) {
                                                             {({active}) => (
                                                                 <a
                                                                     href="#"
-                                                                    className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                                                    className={classNames(active ? "bg-gray-100" : "", "block px-4 py-2 text-sm text-gray-700")}
                                                                 >
                                                                     {email}
                                                                 </a>
@@ -104,7 +104,7 @@ function NavBarLink({token, email}: NavBarLinkProps) {
                                                                 <a
                                                                     href="#"
                                                                     onClick={() => deleteSession()}
-                                                                    className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                                                    className={classNames(active ? "bg-gray-100" : "", "block px-4 py-2 text-sm text-gray-700")}
                                                                 >
                                                                     Sign out
                                                                 </a>
@@ -112,7 +112,7 @@ function NavBarLink({token, email}: NavBarLinkProps) {
                                                         </Menu.Item>
                                                     </Menu.Items>
                                                 </Transition>
-                                            </Menu> : ''
+                                            </Menu> : ""
                                     }
 
                                 </div>
@@ -127,10 +127,10 @@ function NavBarLink({token, email}: NavBarLinkProps) {
                                         as="a"
                                         href={item.href}
                                         className={classNames(
-                                            item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                            'block rounded-md px-3 py-2 text-base font-medium'
+                                            item.current ? "bg-gray-900 text-white" : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                                            "block rounded-md px-3 py-2 text-base font-medium"
                                         )}
-                                        aria-current={item.current ? 'page' : undefined}
+                                        aria-current={item.current ? "page" : undefined}
                                     >
                                         {item.name}
                                     </Disclosure.Button>

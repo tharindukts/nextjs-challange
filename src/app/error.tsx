@@ -1,5 +1,5 @@
-"use client"
-import errorImage from '../../public/errorimage.png'
+"use client";
+import errorImage from "../../public/errorimage.png";
 import Image from "next/image";
 
 export default function Error({error, reset}: {
@@ -9,10 +9,10 @@ export default function Error({error, reset}: {
 
 
     return (
-        <div className="flex flex-col items-center content-center justify-center h-full" style={{height: '100vh'}}>
-            <div className=" text-center p-5" style={{width: '50%'}}>
+        <div className="flex flex-col items-center content-center justify-center h-full" style={{height: "100vh"}}>
+            <div className=" text-center p-5" style={{width: "50%"}}>
                 <div className="flex justify-center">
-                    <Image src={errorImage} style={{width: '50%'}}/>
+                    <Image src={errorImage} style={{width: "50%"}}/>
                 </div>
 
                 <h2 className="text-2xl font-bold mb-4">{error.message}</h2>
@@ -23,5 +23,5 @@ export default function Error({error, reset}: {
                 </button>
             </div>
         </div>
-    )
+    );
 }
